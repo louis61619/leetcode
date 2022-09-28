@@ -7,7 +7,7 @@
 // @lc code=start
 
 // 直接使用 for 迴圈
-// function searchInsert(nums: number[], target: number): number {
+// function searchInsert2(nums: number[], target: number): number {
 //   for(let i = 0; i< nums.length; i++) {
 //     if (nums[i] > target || nums[i] === target) {
 //       return i
@@ -16,17 +16,22 @@
 //   return nums.length
 // };
 
-// 二分搜索算法
+// function timeit(func: () => any) {
+//   const start =  new Date().getTime()
+//   func()
+//   const end = new Date().getTime()
+//   return (end - start)
+// }
+
+// 二分搜索
 function searchInsert(nums: number[], target: number): number {
   let min = 0;
   let max = nums.length - 1
 
   // 可以從中間切一半開始找
   while(true) {
-    const middleIndex = Math.floor(nums.length / 2)
+    const middleIndex = Math.floor((max - min) / 2) + min
     const middle = nums[middleIndex]
-
-    console.log(max)
 
     // 額外判斷只有兩個 item 的陣列
     if(max - min <= 1) {
@@ -40,15 +45,20 @@ function searchInsert(nums: number[], target: number): number {
     }
 
     if (middle > target) {
-      min = middleIndex
+      max = middleIndex
     } else if (middle === target) {
       return middleIndex
     } else {
-      max = middleIndex
+      min = middleIndex
     }
   }
 };
-const a = searchInsert([1, 3, 5, 7, 9, 100, 103, 400], 100)
-console.log(a)
+
+// const a = 1000000
+// const arr = new Array(a).map((item, index) => index)
+// // 111 豪妙
+// console.log(timeit(() => searchInsert2(arr, a)))
+// // 0 毫秒
+// console.log(timeit(() => searchInsert(arr, a)))
 // @lc code=end
 
