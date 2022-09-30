@@ -19,14 +19,18 @@ function isValid(s: string): boolean {
 
   for(let i = 0; i < arr.length; i++) {
     if (obj[arr[i]] !== undefined) {
+      // 右符號查找有沒有對應的左符號
+      // 先找到的右符號對應後找到的左符號
       const openSymbol = stack.pop()
 
       if (obj[arr[i]] !== openSymbol) { return false }
     } else {
+      // 左符號推入stack中
       stack.push(arr[i])
     }
   }
   return stack.length === 0
 };
+isValid("{{}}")
 // @lc code=end
 
