@@ -64,5 +64,7 @@ function mySqrt(x: number): number {
 
 // 使用 Math.sqrt 運算
 // const mySqrt = (x: number) => parseInt(Math.sqrt(x).toString())
+
+// 使用數學公式計算:牛頓法
 // @lc code=end
 

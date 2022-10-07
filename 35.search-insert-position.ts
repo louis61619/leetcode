@@ -55,7 +55,7 @@ function searchInsert(nums: number[], target: number): number {
 };
 
 // const a = 1000000
-// const arr = new Array(a).map((item, index) => index)
+// const arr = [...new Array(a)].map((item, index) => index)
 // // 111 豪妙
 // console.log(timeit(() => searchInsert2(arr, a)))
 // // 0 毫秒
