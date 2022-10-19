@@ -31,15 +31,33 @@
 // };
 
 // 紀錄下之前的每一階的結果
+// function climbStairs(n: number): number {
+//   let arr: number[] = []
+//   for(let i = 0; i < n; i++) {
+//     if (i <= 1) {
+//       arr.push(i + 1)
+//     } else {
+//       arr.push(arr[i - 2] + arr[i - 1])
+//     }
+//   }
+//   return arr[arr.length - 1]
+// };
+
+// 只記錄前兩階的結果
 function climbStairs(n: number): number {
-  if (n === 1) {
-    return 1
+  let pre2 = 0
+  let pre1 = 0
+  for(let i = 0; i < n; i++) {
+    if (i <= 1) {
+      pre2 = pre1
+      pre1 = i + 1
+    } else {
+      let cur = pre1 + pre2
+      pre2 = pre1
+      pre1 = cur
+    }
   }
-  if (n === 2) {
-    return 2
-  }
-  const r = climbStairs(n - 1) + climbStairs(n - 2)
-  return r
+  return pre1
 };
 // @lc code=end
 
