@@ -21,27 +21,28 @@
 
 // Inorder traversal 的概念用一句話解釋就是先走訪左子樹，再走訪父節點，再走訪右子樹
 // 左邊節點沒有就父節點然後往右
-// 遞迴
+// 遞迴 O(n)
 function inorderTraversal(root: TreeNode | null): number[] {
 
   if (!root) {
     return []
   }
   
-  function _inorderTraversal(node: any, arr: number[] = []) {
+//   function _inorderTraversal(node: any, arr: number[] = []) {
 
-    if (!node){
-      return []
-    }
+//     if (!node){
+//       return []
+//     }
 
-    _inorderTraversal(node.left, arr)
-    arr.push(node.val)
-    _inorderTraversal(node.right, arr)
+//     _inorderTraversal(node.left, arr)
+//     arr.push(node.val)
+//     _inorderTraversal(node.right, arr)
 
-    return arr
-  }
+//     return arr
+//   }
   
- return  _inorderTraversal(root)
+//  return  _inorderTraversal(root)
+  return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)]
 };
 // @lc code=end
 
