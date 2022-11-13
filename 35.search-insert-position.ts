@@ -24,35 +24,92 @@
 // }
 
 // 二分搜索
+// function searchInsert(nums: number[], target: number): number {
+//   let min = 0;
+//   let max = nums.length - 1
+
+//   // 可以從中間切一半開始找
+//   while(true) {
+//     const middleIndex = Math.floor((max - min) / 2) + min
+//     const middle = nums[middleIndex]
+
+//     // 額外判斷只有兩個 item 的陣列
+//     if(max - min <= 1) {
+//       if (target <= nums[min]) {
+//         return min
+//       } else if (target <= nums[max]) {
+//         return max
+//       } else {
+//         return max + 1
+//       }
+//     }
+
+//     if (middle > target) {
+//       max = middleIndex
+//     } else if (middle === target) {
+//       return middleIndex
+//     } else {
+//       min = middleIndex
+//     }
+//   }
+// };
+
 function searchInsert(nums: number[], target: number): number {
-  let min = 0;
+  // let max = nums.length
+  // let min = 0
+
+  // // return mid + 1
+  // while (true) {
+  //   const midIndex = Math.floor((max - min) / 2) + min
+  //   const mid = nums[midIndex]
+
+  //   // 終止條件
+  //   if (midIndex === min) {
+  //     if (mid >= target) {
+  //       return min
+  //     }
+  //     return min + 1
+  //   }
+
+  //   if (mid === target) {
+  //     return midIndex
+  //   }
+
+  //   if (target > mid) {
+  //     min = midIndex
+  //   } else {
+  //     max = midIndex
+  //   }
+  // }
   let max = nums.length - 1
+  let min = 0
+  
+  while (true) {
+    const midIndex = Math.floor((max - min) / 2) + min
+    const mid = nums[midIndex]
 
-  // 可以從中間切一半開始找
-  while(true) {
-    const middleIndex = Math.floor((max - min) / 2) + min
-    const middle = nums[middleIndex]
-
-    // 額外判斷只有兩個 item 的陣列
-    if(max - min <= 1) {
-      if (target <= nums[min]) {
-        return min
-      } else if (target <= nums[max]) {
+    // 終止條件
+    if ((max - min) <= 1) {
+      if (target > nums[max]) {
+        return max + 1
+      } else if (nums[max] === target) {
         return max
       } else {
-        return max + 1
+        return min + 1
       }
     }
 
-    if (middle > target) {
-      max = middleIndex
-    } else if (middle === target) {
-      return middleIndex
+    if (mid === target) {
+      return midIndex
+    }
+
+    if (target > mid) {
+      min = midIndex
     } else {
-      min = middleIndex
+      max = midIndex
     }
   }
-};
+}
 
 // const a = 1000000
 // const arr = [...new Array(a)].map((item, index) => index)
