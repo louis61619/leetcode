@@ -8,7 +8,7 @@
 /**
  Do not return anything, modify nums1 in-place instead.
  */
-// const num1 = [0]
+
 // 暴力破解
 // function merge(nums1: number[], m: number, nums2: number[], n: number): void {
 //   for(let i = 0; i < m + n; i++) {
@@ -31,32 +31,45 @@
 //   }
 // };
 
+// 由大到小去排
+// 從後面去排不會動到順序的問題
 function merge(nums1: number[], m: number, nums2: number[], n: number): void {
-  let cacheIndex = 0;
-  for(let i = 0; i < m + n; i++) {
-    let cache = nums2[cacheIndex]
-    // if (cache === undefined) {
-    //   nums1.shift()
-    // }
-    console.log(cache)
-    if (i > m) {
-      nums1.splice(i + 1, 1, cache)
-      cacheIndex++
-      continue
+  let nums1Index = m - 1
+  let nums2Index = n - 1
+  let allIndex = m + n - 1
+  while (nums1Index >= 0 && nums2Index >= 0 && allIndex >= 0) {
+    if (nums1[nums1Index] >= nums2[nums2Index]) {
+      // 放大的
+      nums1[allIndex] = nums1[nums1Index]
+      nums1Index--
+      allIndex--
+      // console.log('---a')
     }
-    if (cache !== undefined && nums1[i] >= cache) {
-      nums1.splice(i + 1, 0, cache)
-      cacheIndex++
+
+    if (nums2[nums2Index] > nums1[nums1Index]) {
+      nums1[allIndex] = nums2[nums2Index]
+      nums2Index--
+      allIndex--
+      // console.log('---b')
     }
+
+    // console.log(nums1, nums1Index, nums2Index, allIndex, '---c')
   }
-  console.log(nums1)
+
+  while(nums2Index >= 0) {
+    // console.log(allIndex, nums2Index)
+    nums1[allIndex] = nums2[nums2Index]
+    nums2Index--
+    allIndex--
+  }
+  // console.log(nums1)
 }
 
-merge(
-  [-1,0,1,1,0,0,0,0,0],
-4,
-[-1,0,2,2,3],
-5
-)
+// merge(
+//   [1,2,3,0,0,0],
+// 3,
+// [2,5,6],
+// 3
+// )
 // @lc code=end
 

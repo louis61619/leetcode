@@ -31,6 +31,6 @@ function isValid(s: string): boolean {
   }
   return stack.length === 0
 };
-isValid("{{}}")
+// isValid("{{}}")
 // @lc code=end
 
