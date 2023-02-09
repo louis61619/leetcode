@@ -6,6 +6,7 @@
 
 // @lc code=start
 // 使用 object 物件做緩存查找，也可使用 map
+// counter 方法
 function twoSum(nums: number[], target: number): number[] {
   const obj: { [key: number]: number } = {}
   for(let i = 0; i < nums.length; i++) {
