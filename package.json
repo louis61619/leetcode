@@ -1,0 +1,23 @@
+{
+  "name": "leetcode",
+  "version": "1.0.0",
+  "description": "",
+  "main": "doClassfication.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/louis61619/leetcode.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/louis61619/leetcode/issues"
+  },
+  "homepage": "https://github.com/louis61619/leetcode#readme",
+  "dependencies": {
+    "require-from-string": "^2.0.2",
+    "vsc-leetcode-cli": "^2.8.1"
+  }
+}

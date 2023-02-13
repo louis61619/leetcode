@@ -1,7 +1,7 @@
 /*
- * @lc app=leetcode id=104 lang=typescript
+ * @lc app=leetcode id=108 lang=typescript
  *
- * [104] Maximum Depth of Binary Tree
+ * [108] Convert Sorted Array to Binary Search Tree
  */
 
 // @lc code=start
@@ -19,9 +19,8 @@
  * }
  */
 
-function maxDepth(root: TreeNode | null): number {
-    if (!root) return 0;
-    return 1 + Math.max(maxDepth(root.left), maxDepth(root.right))
+function sortedArrayToBST(nums: number[]): TreeNode | null {
+
 };
 // @lc code=end
 
