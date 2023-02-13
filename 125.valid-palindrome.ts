@@ -49,3 +49,4 @@ function isPalindrome(s: string): boolean {
 // console.log(a)
 // @lc code=end
 
+export {}
