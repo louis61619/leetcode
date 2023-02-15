@@ -19,17 +19,44 @@
  * }
  */
 
+// 高度平衡的樹為每個節點的每個子樹深度距離都不能超過 1
+// function isBalanced(root: TreeNode | null): boolean {
+//   let res = true
+//   function maxdp(root: TreeNode) {
+//     if(!root || !res) {
+//       return 0
+//     }
+//     let left = maxdp(root.left)
+//     let right = maxdp(root.right)
+//     if (Math.abs(left - right) > 1) {
+//       res = false
+//       return 0
+//     }
+//     return Math.max(left, right) + 1
+//   }
+//   maxdp(root)
+//   return res;
+// };
+
+// with out variable
 function isBalanced(root: TreeNode | null): boolean {
-  let res = true
-  function maxdp(root: TreeNode) {
-    if(!root || !res) {
-      return 0
+  function check(root: TreeNode) {
+    if(!root) return 0
+    let left = check(root.left)
+    let right = check(root.right)
+    if (left === -1) {
+      return -1
     }
-    let left = maxdp(root.left)
-    let right = maxdp(root.right)
-    return Math.abs(left - right) > 1 ? false : true
+    if (right === -1) {
+      return -1
+    }
+    if (Math.abs(left - right) > 1) {
+      return -1
+    }
+    return Math.max(left, right) + 1
   }
-  return maxdp(root)
-};
+  return check(root) !== -1
+}
+
 // @lc code=end
 
