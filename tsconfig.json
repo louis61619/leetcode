@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
-    "typeRoots": [ "./type.d.ts"]
+    "typeRoots": [ "./type.d.ts"],
+    "lib": ["ESNext", "DOM"]
   }
 }
