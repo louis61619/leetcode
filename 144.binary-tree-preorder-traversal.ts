@@ -19,6 +19,7 @@
  * }
  */
 
+// 中間優先，先往左，再往右
 function preorderTraversal(root: TreeNode | null): number[] {
   const arr = []
   function traversal(root: TreeNode) {

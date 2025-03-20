@@ -19,6 +19,7 @@
  * }
  */
 
+// 先往右，再往左，中間最後
 function postorderTraversal(root: TreeNode | null): number[] {
   const arr = []
   function traversal(root: TreeNode) {

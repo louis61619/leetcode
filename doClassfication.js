@@ -39,9 +39,10 @@ for(const problemId in TAGS) {
 function addQuestionLink(no) {
   if (completeQuestionMap.has(no)) {
     return `[${no}](${completeQuestionMap.get(no)})`
-  } else {
-    return no
-  }
+  } 
+  // else {
+  //   return no
+  // }
 }
 
 function generateReadMe(tags) {
@@ -51,9 +52,13 @@ function generateReadMe(tags) {
     str = str + '## ' + item[0] + '\n\n'
     str = str + item[1].reduce((pre, cur, index, arr) => {
       const isLast = arr.length - 1 === index
-      return pre + addQuestionLink(cur) + (!isLast ? ', ' : '')
+      const link = addQuestionLink(cur);
+      if (link) {
+        return pre + addQuestionLink(cur) + (!isLast ? ', ' : '')
+      }
+      return pre;
     }, '')
-    str = str + '\n\n'
+    str = str.replace(/, $/, '') + '\n\n'
   }
   
   return str
