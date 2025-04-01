@@ -3960,5 +3960,5 @@ const s = d.reduce((pre, cur) => {
   return pre
 }, '')
 
-
+// 先刷題號 400 以內的
 console.log(s)
