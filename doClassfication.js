@@ -23,6 +23,8 @@ const completeQuestionMap = fs.readdirSync('./').reduce((pre, cur) => {
   return pre
 }, new Map())
 
+console.log('totals:', [...completeQuestionMap.keys()].length)
+
 const tagsMap = new Map()
 
 for(const problemId in TAGS) {

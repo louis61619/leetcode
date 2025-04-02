@@ -1,3 +1,5 @@
+const fs = require('fs')
+
 const d = [
   {
     "slug": "top-interview-150-1-yf91",
@@ -3951,10 +3953,24 @@ const d = [
   }
 ]
 
+function isNumeric(value) {
+  return /^\d+$/.test(value);
+}
+
+const completeQuestionMap = fs.readdirSync('./').reduce((pre, cur) => {
+  const number = cur.split('.')[0]
+  if (isNumeric(number)) {
+    pre.set(number, cur)
+  }
+  return pre
+}, new Map())
+
+
 const s = d.reduce((pre, cur) => {
   pre += cur.name + '\n'
   cur.questions.forEach((q) => {
-    pre += (q.questionFrontendId + '.' + q.title +  '\n')
+    const isComplete = completeQuestionMap.get(q.questionFrontendId)
+    pre += (q.questionFrontendId + '.' + q.title + (isComplete ? ' (V)' : '') + '\n')
   })
   pre += '\n'
   return pre
@@ -3962,3 +3978,5 @@ const s = d.reduce((pre, cur) => {
 
 // 先刷題號 400 以內的
 console.log(s)
+
+fs.writeFileSync('top150.md', s)
